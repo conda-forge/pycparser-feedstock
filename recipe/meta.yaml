@@ -13,14 +13,13 @@ source:
 
 build:
   noarch: python
-  number: 0
-  script: {{ PYTHON }} -m pip install . -vvv
+  number: 1
+  script: {{ PYTHON }} -m pip install . -vvv && cp -r utils ${SP_DIR}/{{ name }}
 
 requirements:
   host:
     - pip
     - python
-    - setuptools
   run:
     - python
 
@@ -31,7 +30,7 @@ test:
 
 about:
   home: https://github.com/eliben/pycparser
-  license: BSD 3-clause
+  license: BSD-3-clause
   license_file: LICENSE
   summary: Complete C99 parser in pure Python
   description: |
@@ -42,3 +41,4 @@ about:
 extra:
   recipe-maintainers:
     - synapticarbors
+    - scopatz
