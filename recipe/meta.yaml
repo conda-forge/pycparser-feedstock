@@ -1,15 +1,13 @@
 {% set name = "pycparser" %}
-{% set version = "2.21" %}
-{% set sha256 = "e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206" %}
+{% set version = "2.22" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 491c8be9c040f5390f5bf44a5b07752bd07f56edf992381b05c701439eec10f6
 
 build:
   noarch: python
@@ -19,14 +17,18 @@ build:
 requirements:
   host:
     - pip
-    - python =2.7|>=3.4
+    - python >=3.8
   run:
-    - python =2.7|>=3.4
+    - python >=3.8
 
 test:
   imports:
     - pycparser
     - pycparser.ply
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/eliben/pycparser
