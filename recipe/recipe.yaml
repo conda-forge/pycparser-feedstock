@@ -12,7 +12,7 @@ source:
   sha256: 491c8be9c040f5390f5bf44a5b07752bd07f56edf992381b05c701439eec10f6
 
 build:
-  number: 1
+  number: 2
   noarch: python
   script: python -m pip install . -vvv && cp -r utils ${SP_DIR}/pycparser
 
@@ -20,7 +20,7 @@ requirements:
   host:
     - pip
     - setuptools
-    - python ${{ python_min }}
+    - python ${{ python_min }}.*
   run:
     - python >=${{ python_min }}
 
@@ -30,7 +30,7 @@ tests:
         - pycparser
         - pycparser.ply
       pip_check: true
-      python_version: ${{ python_min }}
+      python_version: ${{ python_min }}.*
 
 about:
   license: BSD-3-Clause
