@@ -10,14 +10,14 @@ source:
   sha256: f03387877eab82ce01bbdfd0ba7252ee55a90b1c708d5129e2ce915475cf1db6
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: python -m pip install . -vvv --no-build-isolation --no-deps && mkdir -p ${SP_DIR}/pycparser/utils && cp -r utils/fake_libc_include ${SP_DIR}/pycparser/utils
 
 requirements:
   host:
     - pip
-    - setuptools
+    - setuptools >=77.0.3
     - python ${{ python_min }}.*
   run:
     - python >=${{ python_min }}
